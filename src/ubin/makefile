@@ -144,6 +144,9 @@ nim:
 sleep: 
 	$(CC) $(CFLAGS) $(LDFLAGS) -D TESTE sleep/*.c -o $(UBINDIR)/sleep $(LIBDIR)/libc.a
 
+# Builds vm.
+sleep: 
+	$(CC) $(CFLAGS) $(LDFLAGS) -D TESTE vm/*.c -o $(UBINDIR)/vm $(LIBDIR)/libc.a
 
 # Clean compilation files.
 clean:
