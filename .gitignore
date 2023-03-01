@@ -27,6 +27,7 @@ bin/*
 bin/sbin/*
 bin/ubin/*
 doc/*-kernel
+target/*
 *.bbl
 *.aux
 *.swp
@@ -44,6 +45,7 @@ doc/*-kernel
 # ISO Images
 *.img
 *.iso
+*.lock
 nanvix-iso/*
 tools/run/bochsrc.txt
 

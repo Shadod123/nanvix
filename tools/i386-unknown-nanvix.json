@@ -1,0 +1,22 @@
+{
+    "arch": "x86",
+    "cpu": "pentium4",
+    "crt-static-respected": true,
+    "data-layout": "e-m:e-p:32:32-p270:32:32-p271:32:32-p272:64:64-f64:32:64-f80:32-n8:16:32-S128",
+    "dynamic-linking": true,
+    "env": "",
+    "executables": true,
+    "has-rpath": true,
+    "linker": "i386-elf-ld",
+    "linker-flavor": "ld",
+    "linker-is-gnu": false,
+    "llvm-target": "i386-unknown-nanvix",
+    "max-atomic-width": 64,
+    "os": "nanvix",
+    "relro-level": "full",
+    "target-c-int-width": "32",
+    "target-endian": "little",
+    "target-family": "unix",
+    "target-pointer-width": "32",
+    "vendor": "unknown"
+}
