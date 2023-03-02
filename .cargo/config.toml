@@ -1,6 +1,9 @@
 [build]
 target = "tools/i386-unknown-nanvix.json"
-rustflags = ["-C", "target-feature=-crt-static"]
+rustflags = [
+    "-C", "link-arg=-T./lib/link.ld",
+    "-C", "link-arg=--sysroot=./",
+]
 
 [unstable]
 build-std = ["core", "compiler_builtins"]
