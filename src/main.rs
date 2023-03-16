@@ -13,6 +13,3 @@ pub extern "C" fn main() -> ! {
 fn panic(_panic: &PanicInfo) -> ! {
     loop {}
 }
-
-#[lang = "eh_personality"]
-extern "C" fn eh_personality() {}
