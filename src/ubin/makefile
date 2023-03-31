@@ -43,11 +43,11 @@
 .PHONY: clear
 .PHONY: nim
 .PHONY: sleep
-.PHONY: vm
+.PHONY: mips
 
 # Builds everything.
 all: cat chgrp chmod chown cp echo kill ln login ls mv nice pwd rm stat sync \
-	 touch tsh ps clear nim sleep vm
+	 touch tsh ps clear nim sleep mips
 
 # Builds cat.
 cat: 
@@ -145,9 +145,9 @@ nim:
 sleep: 
 	$(CC) $(CFLAGS) $(LDFLAGS) -D TESTE sleep/*.c -o $(UBINDIR)/sleep $(LIBDIR)/libc.a
 
-# Builds vm.
-vm: 
-	$(CC) $(CFLAGS) $(LDFLAGS) -D TESTE vm/*.c -o $(UBINDIR)/vm $(LIBDIR)/libc.a
+# Builds mips.
+mips: 
+	$(CC) $(CFLAGS) $(LDFLAGS) -D TESTE mips/*.c -o $(UBINDIR)/mips $(LIBDIR)/libc.a
 
 # Clean compilation files.
 clean:
@@ -175,4 +175,4 @@ clean:
 	@rm -f $(UBINDIR)/clear
 	@rm -f $(UBINDIR)/nim
 	@rm -f $(UBINDIR)/sleep
-	@rm -f $(UBINDIR)/vm
+	@rm -f $(UBINDIR)/mips

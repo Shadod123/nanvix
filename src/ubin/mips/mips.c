@@ -20,7 +20,6 @@ enum OpCode
 int counter = 0;
 byte registers[MAX_REGISTERS];
 byte program[MAX_PROGRAM];
-int program_len = 0;
 
 byte example[] = {
 	NOP,
@@ -29,7 +28,7 @@ byte example[] = {
 	HLT,
 };
 
-void vm_load(const byte *prog, int prog_len)
+void mips_load(const byte *prog, int prog_len)
 {
 	for (int i = 0; i < prog_len; i++)
 	{
@@ -37,12 +36,12 @@ void vm_load(const byte *prog, int prog_len)
 	}
 }
 
-void vm_halt()
+void mips_halt()
 {
 	memset(program, 0, sizeof(program));
 }
 
-void vm_exec()
+void mips_exec()
 {
 	byte opcode = 0;
 	bool halt = false;
@@ -69,14 +68,14 @@ void vm_exec()
 		counter++;
 	}
 
-	vm_halt();
+	mips_halt();
 }
 
 int main()
 {
 	printf("%d\n", 1.2);
-	vm_load(example, sizeof(example) / sizeof(byte));
-	vm_exec();
+	mips_load(example, sizeof(example) / sizeof(byte));
+	mips_exec();
 
 	return 0;
 }
