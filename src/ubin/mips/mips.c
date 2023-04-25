@@ -92,6 +92,20 @@ void mips_clean()
 	memset(memory, 0, sizeof(memory));
 }
 
+void mips_add(int rt, int rs, int rd) {
+	int s = mips_get_reg(rs);
+	int t = mips_get_reg(rt);
+	int d = s + t;
+	mips_set_reg(rd, d);
+}
+
+void mips_sub(int rt, int rs, int rd) {
+	int s = mips_get_reg(rs);
+	int t = mips_get_reg(rt);
+	int d = s - t;
+	mips_set_reg(rd, d);
+}
+
 void mips_typeR_inst(int inst, int opcode)
 {
     int rs = (inst >> 21) & 0x1F;
@@ -106,12 +120,14 @@ void mips_typeR_inst(int inst, int opcode)
     switch (opcode)
     {
     case ADD:
+		mips_add(rt, rs, rd);
         printf("ADD $%d, $%d, $%d\n", rd, rs, rt);
         break;
     case ADDU:  
         printf("ADDU $%d, $%d, $%d\n", rd, rs, rt);
         break;
     case SUB:
+		mips_sub(rt, rs, rd);
         printf("SUB $%d, $%d, $%d\n", rd, rs, rt);
         break;
     case SUBU:
@@ -259,36 +275,17 @@ void mips_exec()
  */
 int main()
 {
-	int size = 24 * sizeof(int);
+	int size = 5 * sizeof(int);
 	int *program = (int *)malloc(size);
 
 	mips_clean();
 
-	// Teste de decodificação de todas as instruções com bytecode implementado
+	// Teste de decodificação de instruções com bytecode implementado
 	program  [0] = ADD;  
 	program  [1] = ADDI; 
-	program  [2] = ADDIU;
-	program  [3] = ADDU;
-	program  [4] = AND; 
-	program  [5] = ANDI; 
-	program  [6] = BEQ;  
-	program  [7] = BNE;  
-	program  [8] = J;    
-	program  [9] = JAL;  
-	program [10] = JR;   
-	program [11] = LUI;  
-	program [12] = LW;   
-	program [13] = OR;   
-	program [14] = ORI;  
-	program [15] = SLT;  
-	program [16] = SLTI; 
-	program [17] = SLTIU;
-	program [18] = SLTU; 
-	program [19] = SLL;  
-	program [20] = SRL;  
-	program [21] = SW;   
-	program [22] = SUB;  
-	program [23] = SUBU; 
+	program  [2] = SUB;
+	program  [3] = LW;
+	program  [4] = J; 
 
 	mips_load(program, size);
 	mips_exec();
