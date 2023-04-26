@@ -92,14 +92,14 @@ void mips_clean()
 	memset(memory, 0, sizeof(memory));
 }
 
-void mips_add(int rt, int rs, int rd) {
+void mips_add(int rd, int rs, int rt) {
 	int s = mips_get_reg(rs);
 	int t = mips_get_reg(rt);
 	int d = s + t;
 	mips_set_reg(rd, d);
 }
 
-void mips_sub(int rt, int rs, int rd) {
+void mips_sub(int rd, int rs, int rt) {
 	int s = mips_get_reg(rs);
 	int t = mips_get_reg(rt);
 	int d = s - t;
