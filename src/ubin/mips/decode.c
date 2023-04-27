@@ -17,14 +17,14 @@ void mips_typeR_inst(int inst, int opcode)
 	{
 	case ADD:
 		printf("ADD $%d, $%d, $%d\n", rd, rs, rt);
-		mips_add(rt, rs, rd);
+		mips_add(rd, rs, rt);
 		break;
 	case ADDU:
 		printf("ADDU $%d, $%d, $%d\n", rd, rs, rt);
 		break;
 	case SUB:
 		printf("SUB $%d, $%d, $%d\n", rd, rs, rt);
-		mips_sub(rt, rs, rd);
+		mips_sub(rd, rs, rt);
 		break;
 	case SUBU:
 		printf("SUBU $%d, $%d, $%d\n", rd, rs, rt);
@@ -65,10 +65,11 @@ void mips_typeJ_inst(int inst, int opcode)
 	switch (opcode)
 	{
 	case J:
-		printf("J 0x%x\n", target);
+		printf("J %x\n", target);
+		mips_j(target);
 		break;
 	case JAL:
-		printf("JAL 0x%x\n", target);
+		printf("JAL %x\n", target);
 		break;
 	default:
 		printf("Instrução J não reconhecida\n");
@@ -88,6 +89,7 @@ void mips_typeI_inst(int inst, int opcode)
 	{
 	case ADDI:
 		printf("ADDI $%d, $%d, %d\n", rt, rs, imm);
+		mips_addi(rt, rs, imm);
 		break;
 	case ADDIU:
 		printf("ADDIU $%d, $%d, %d\n", rt, rs, imm);
@@ -105,7 +107,7 @@ void mips_typeI_inst(int inst, int opcode)
 		printf("SLTIU $%d, $%d, %d\n", rt, rs, imm);
 		break;
 	case LUI:
-		printf("LUI $%d, 0x%x\n", rt, imm);
+		printf("LUI $%d, %x\n", rt, imm);
 		break;
 	case LW:
 		printf("LW $%d, %d($%d)\n", rt, imm, rs);
@@ -116,10 +118,10 @@ void mips_typeI_inst(int inst, int opcode)
 		mips_sw(rt, imm, rs);
 		break;
 	case BEQ:
-		printf("BEQ $%d, %d, 0x%x\n", rt, rs, imm);
+		printf("BEQ $%d, %d, %x\n", rt, rs, imm);
 		break;
 	case BNE:
-		printf("BNE $%d, %d, 0x%x\n", rt, rs, imm);
+		printf("BNE $%d, %d, %x\n", rt, rs, imm);
 		break;
 	default:
 		printf("Instrução I não reconhecida\n");
