@@ -5,18 +5,17 @@
 
 void mips_add(int rd, int rs, int rt)
 {
-	int s = mips_get_reg(rs);
-	int t = mips_get_reg(rt);
-	int d = s + t;
-	mips_set_reg(rd, d);
+	mips_set_reg(rd, mips_get_reg(rs) + mips_get_reg(rt));
+}
+
+void mips_addi(int rt, int rs, int imm)
+{
+	mips_set_reg(rt, mips_get_reg(rs) + imm);
 }
 
 void mips_sub(int rd, int rs, int rt)
 {
-	int s = mips_get_reg(rs);
-	int t = mips_get_reg(rt);
-	int d = s - t;
-	mips_set_reg(rd, d);
+	mips_set_reg(rd, mips_get_reg(rs) - mips_get_reg(rt));
 }
 
 void mips_lw(int rd, int imm, int rs)
@@ -27,4 +26,9 @@ void mips_lw(int rd, int imm, int rs)
 void mips_sw(int rd, int imm, int rs)
 {
 	mips_write_mem(imm + mips_get_reg(rs), mips_get_reg(rd));
+}
+
+void mips_j(int target)
+{
+	counter = target;
 }
