@@ -58,15 +58,15 @@ void mips_typeR_inst(int inst, int opcode)
 	switch (opcode)
 	{
 	case ADD:
-		printf("ADD %s, %s, %s\n", mips_get_reg_name(rd), mips_get_reg_name(rs), mips_get_reg_name(rt));
-		mips_add(rt, rs, rd);
+		printf("ADD $%d, $%d, $%d\n", mips_get_reg_name(rd), mips_get_reg_name(rs), mips_get_reg_name(rt));
+		mips_add(rd, rs, rt);
 		break;
 	case ADDU:
 		printf("ADDU %s, %s, %s\n", mips_get_reg_name(rd), mips_get_reg_name(rs), mips_get_reg_name(rt));
 		break;
 	case SUB:
-		printf("SUB %s, %s, %s\n", mips_get_reg_name(rd), mips_get_reg_name(rs), mips_get_reg_name(rt));
-		mips_sub(rt, rs, rd);
+		printf("SUB $%d, $%d, $%d\n", mips_get_reg_name(rd), mips_get_reg_name(rs), mips_get_reg_name(rt));
+		mips_sub(rd, rs, rt);
 		break;
 	case SUBU:
 		printf("SUBU %s, %s, %s\n", mips_get_reg_name(rd), mips_get_reg_name(rs), mips_get_reg_name(rt));
@@ -107,10 +107,11 @@ void mips_typeJ_inst(int inst, int opcode)
 	switch (opcode)
 	{
 	case J:
-		printf("J 0x%x\n", target);
+		printf("J %x\n", target);
+		mips_j(target);
 		break;
 	case JAL:
-		printf("JAL 0x%x\n", target);
+		printf("JAL %x\n", target);
 		break;
 	default:
 		printf("Instrução J não reconhecida\n");
@@ -129,7 +130,8 @@ void mips_typeI_inst(int inst, int opcode)
 	switch (opcode)
 	{
 	case ADDI:
-		printf("ADDI %s, %s, %d\n", mips_get_reg_name(rt), mips_get_reg_name(rs), imm);
+		printf("ADDI $%d, $%d, %d\n", mips_get_reg_name(rt), mips_get_reg_name(rs), imm);
+		mips_addi(rt, rs, imm);
 		break;
 	case ADDIU:
 		printf("ADDIU %s, %s, %d\n", mips_get_reg_name(rt), mips_get_reg_name(rs), imm);
@@ -147,7 +149,7 @@ void mips_typeI_inst(int inst, int opcode)
 		printf("SLTIU %s, %s, %d\n", mips_get_reg_name(rt), mips_get_reg_name(rs), imm);
 		break;
 	case LUI:
-		printf("LUI %s, 0x%x\n", mips_get_reg_name(rs), imm);
+		printf("LUI $%d, %x\n", mips_get_reg_name(rt), imm);
 		break;
 	case LW:
 		printf("LW %s, %d(%d)\n", mips_get_reg_name(rs), imm, rs);
@@ -158,10 +160,10 @@ void mips_typeI_inst(int inst, int opcode)
 		mips_sw(rt, imm, rs);
 		break;
 	case BEQ:
-		printf("BEQ %s, %s, 0x%x\n", mips_get_reg_name(rt), mips_get_reg_name(rs), imm);
+		printf("BEQ $%d, %d, %x\n", mips_get_reg_name(rt), mips_get_reg_name(rs), imm);
 		break;
 	case BNE:
-		printf("BNE %s, %s, 0x%x\n", mips_get_reg_name(rt), mips_get_reg_name(rs), imm);
+		printf("BNE $%d, %d, %x\n", mips_get_reg_name(rt), mips_get_reg_name(rs), imm);
 		break;
 	default:
 		printf("Instrução I não reconhecida\n");

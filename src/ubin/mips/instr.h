@@ -12,6 +12,15 @@
 void mips_add(int rd, int rs, int rt);
 
 /**
+ * @brief Realiza a operação de adição entre o registrador rs e o valor imediato imm, e armazena o resultado no registrador rt.
+ *
+ * @param rt  Registrador de destino da operação.
+ * @param rs  Registrador de origem da operação.
+ * @param imm Valor imediato.
+ */
+void mips_addi(int rt, int rs, int imm);
+
+/**
  * @brief Realiza a operação de subtração entre os registradores rs e rt, e armazena o resultado no registrador rd.
  *
  * @param rd Registrador de destino da operação.
@@ -37,3 +46,10 @@ void mips_lw(int rd, int imm, int rs);
  * @param rs Registrador fonte que contém o endereço base da memória.
  */
 void mips_sw(int rd, int imm, int rs);
+
+/**
+ * @brief Realiza a operação de pulo (jump) para o endereço de destino.
+ *
+ * @param target Endereço de destinho da operação (label).
+ */
+void mips_j(int target);
