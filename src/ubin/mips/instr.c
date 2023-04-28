@@ -8,7 +8,7 @@ void mips_add(int rd, int rs, int rt)
 	int s = mips_get_reg(rs);
 	int t = mips_get_reg(rt);
 	int d = s + t;
-	printf("%d + %d = %d\n", s, t, d);
+	printf("%d + %d = %d\n\n", s, t, d);
 	mips_set_reg(rd, d);
 }
 
@@ -22,7 +22,7 @@ void mips_sub(int rd, int rs, int rt)
 	int s = mips_get_reg(rs);
 	int t = mips_get_reg(rt);
 	int d = s - t;
-	printf("%d - %d = %d\n", s, t, d);
+	printf("%d - %d = %d\n\n", s, t, d);
 	mips_set_reg(rd, d);
 }
 

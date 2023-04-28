@@ -58,14 +58,14 @@ void mips_typeR_inst(int inst, int opcode)
 	switch (opcode)
 	{
 	case ADD:
-		printf("ADD $%d, $%d, $%d\n", mips_get_reg_name(rd), mips_get_reg_name(rs), mips_get_reg_name(rt));
+		printf("ADD %s, %s, %s\n", mips_get_reg_name(rd), mips_get_reg_name(rs), mips_get_reg_name(rt));
 		mips_add(rd, rs, rt);
 		break;
 	case ADDU:
 		printf("ADDU %s, %s, %s\n", mips_get_reg_name(rd), mips_get_reg_name(rs), mips_get_reg_name(rt));
 		break;
 	case SUB:
-		printf("SUB $%d, $%d, $%d\n", mips_get_reg_name(rd), mips_get_reg_name(rs), mips_get_reg_name(rt));
+		printf("SUB %s, %s, %s\n", mips_get_reg_name(rd), mips_get_reg_name(rs), mips_get_reg_name(rt));
 		mips_sub(rd, rs, rt);
 		break;
 	case SUBU:
@@ -130,7 +130,7 @@ void mips_typeI_inst(int inst, int opcode)
 	switch (opcode)
 	{
 	case ADDI:
-		printf("ADDI $%d, $%d, %d\n", mips_get_reg_name(rt), mips_get_reg_name(rs), imm);
+		printf("ADDI %s, %s, %d\n", mips_get_reg_name(rt), mips_get_reg_name(rs), imm);
 		mips_addi(rt, rs, imm);
 		break;
 	case ADDIU:
@@ -149,7 +149,7 @@ void mips_typeI_inst(int inst, int opcode)
 		printf("SLTIU %s, %s, %d\n", mips_get_reg_name(rt), mips_get_reg_name(rs), imm);
 		break;
 	case LUI:
-		printf("LUI $%d, %x\n", mips_get_reg_name(rt), imm);
+		printf("LUI %s, %x\n", mips_get_reg_name(rt), imm);
 		break;
 	case LW:
 		printf("LW %s, %d(%d)\n", mips_get_reg_name(rs), imm, rs);
@@ -160,10 +160,10 @@ void mips_typeI_inst(int inst, int opcode)
 		mips_sw(rt, imm, rs);
 		break;
 	case BEQ:
-		printf("BEQ $%d, %d, %x\n", mips_get_reg_name(rt), mips_get_reg_name(rs), imm);
+		printf("BEQ %s, %d, %x\n", mips_get_reg_name(rt), mips_get_reg_name(rs), imm);
 		break;
 	case BNE:
-		printf("BNE $%d, %d, %x\n", mips_get_reg_name(rt), mips_get_reg_name(rs), imm);
+		printf("BNE %s, %d, %x\n", mips_get_reg_name(rt), mips_get_reg_name(rs), imm);
 		break;
 	default:
 		printf("Instrução I não reconhecida\n");
