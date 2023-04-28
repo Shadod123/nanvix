@@ -20,6 +20,11 @@ void mips_load(int *program, int size)
 	{
 		memory[i] = program[i];
 	}
+
+	for (int i = 0; i < REGISTER_LEN; i++)
+	{
+		registers[i] = 1;
+	}
 }
 
 void mips_clean()
