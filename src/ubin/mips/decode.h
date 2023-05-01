@@ -2,8 +2,6 @@
 
 #include "types.h"
 
-char *mips_get_reg_name(int reg);
-
 /**
  * @brief Decodifica e executa instruções do tipo R (registrador) do MIPS.
  *

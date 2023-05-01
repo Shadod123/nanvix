@@ -18,3 +18,11 @@ int mips_get_reg(int reg);
  * @return O valor atribuído ao registrador.
  */
 void mips_set_reg(int reg, int val);
+
+/**
+ * @brief Retorna o nome do registrador especificado.
+ *
+ * @param reg O registrador para o qual o nome é desejado.
+ * @return O nome do registrador especificado.
+ */
+char *mips_get_reg_name(int reg);

@@ -26,14 +26,16 @@ void mips_sub(int rd, int rs, int rt)
 	mips_set_reg(rd, d);
 }
 
-void mips_lw(int rd, int imm, int rs)
+void mips_lw(int rt, int imm, int rs)
 {
-	mips_set_reg(rd, mips_read_mem(imm + mips_get_reg(rs)));
+	printf("%s = mem[%d]\n\n", mips_get_reg_name(rt), mips_get_reg(rs) + imm);
+	mips_set_reg(rt, mips_read_mem(imm + mips_get_reg(rs)));
 }
 
-void mips_sw(int rd, int imm, int rs)
+void mips_sw(int rt, int imm, int rs)
 {
-	mips_write_mem(imm + mips_get_reg(rs), mips_get_reg(rd));
+	printf("mem[%d] = %d\n\n", mips_get_reg(rs) + imm, mips_get_reg(rt));
+	mips_write_mem(imm + mips_get_reg(rs), mips_get_reg(rt));
 }
 
 void mips_j(int target)
