@@ -24,7 +24,7 @@ enum MipsOperation
 	SLTU = 0x0000002B,
 	SLL = 0x00000000,
 	SRL = 0x00000002,
-	SW = (int32_t)0xAC000000U,
+	SW = (int32_t)0xAC000000,
 	SUB = 0x00000022,
 	SUBU = 0x00000023,
 };

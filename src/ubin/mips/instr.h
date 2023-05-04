@@ -32,7 +32,7 @@ void mips_sub(int rd, int rs, int rt);
 /**
  * @brief Carrega uma palavra (word) da memória na registrador rd.
  *
- * @param rd Registrador destino para armazenar a palavra carregada.
+ * @param rt Registrador destino para armazenar a palavra carregada.
  * @param imm Deslocamento com sinal de 16 bits que é adicionado ao registrador rs para obter o endereço da memória.
  * @param rs Registrador fonte que contém o endereço base da memória.
  */
@@ -41,7 +41,7 @@ void mips_lw(int rd, int imm, int rs);
 /**
  * @brief Armazena uma palavra (word) do registrador rd na memória.
  *
- * @param rd Registrador fonte que contém a palavra a ser armazenada.
+ * @param rt Registrador fonte que contém a palavra a ser armazenada.
  * @param imm Deslocamento com sinal de 16 bits que é adicionado ao registrador rs para obter o endereço da memória.
  * @param rs Registrador fonte que contém o endereço base da memória.
  */

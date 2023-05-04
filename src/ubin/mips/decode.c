@@ -1,48 +1,7 @@
 #include "consts.h"
 #include "decode.h"
 #include "instr.h"
-
-char *mips_get_reg_name(int reg)
-{
-	switch (reg)
-	{
-	case 8:
-		return "$t0";
-	case 9:
-		return "$t1";
-	case 10:
-		return "$t2";
-	case 11:
-		return "$t3";
-	case 12:
-		return "$t4";
-	case 13:
-		return "$t5";
-	case 14:
-		return "$t6";
-	case 15:
-		return "$t7";
-	case 16:
-		return "$s0";
-	case 17:
-		return "$s1";
-	case 18:
-		return "$s2";
-	case 19:
-		return "$s3";
-	case 20:
-		return "$s4";
-	case 21:
-		return "$s5";
-	case 22:
-		return "$s6";
-	case 23:
-		return "$s7";
-	default:
-		printf("Registrador não reconhecido\n");
-		return "";
-	}
-}
+#include "reg.h"
 
 void mips_typeR_inst(int inst, int opcode)
 {
@@ -152,11 +111,11 @@ void mips_typeI_inst(int inst, int opcode)
 		printf("LUI %s, %x\n", mips_get_reg_name(rt), imm);
 		break;
 	case LW:
-		printf("LW %s, %d(%d)\n", mips_get_reg_name(rs), imm, rs);
+		printf("LW %s, %d(%s)\n", mips_get_reg_name(rt), imm, mips_get_reg_name(rs));
 		mips_lw(rt, imm, rs);
 		break;
 	case SW:
-		printf("SW %s, %d(%d)\n", mips_get_reg_name(rs), imm, rs);
+		printf("SW %s, %d(%s)\n", mips_get_reg_name(rt), imm, mips_get_reg_name(rs));
 		mips_sw(rt, imm, rs);
 		break;
 	case BEQ:
