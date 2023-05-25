@@ -16,3 +16,5 @@ int counter;
 int registers[REGISTER_LEN];
 int memory[MEMORY_LEN];
 int length;
+
+FILE *log_file;

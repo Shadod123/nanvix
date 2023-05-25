@@ -12,6 +12,13 @@ int main()
 
 	mips_clean();
 
+	// Inicializa o arquivo de log
+	log_file = fopen("log.txt", "w");
+	fprintf(log_file, "============================================\n\n");
+	fprintf(log_file, "  			  Arquivo de Log  			   \n\n");
+	fprintf(log_file, "============================================\n\n");
+	fclose(log_file);
+
 	program[0] = mips_typeR_bytecode(ADD, t0, s0, s1); // add $t0, $s0, $s1
 	program[1] = mips_typeR_bytecode(SUB, s4, t0, t1); // sub $s4, $t0, $t1
 	program[2] = mips_typeI_bytecode(ADDI, t7, t0, 7); // addi $t7, $t0, 7
