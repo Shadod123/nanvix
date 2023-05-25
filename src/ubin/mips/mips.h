@@ -6,3 +6,4 @@
 #include "mem.h"
 #include "reg.h"
 #include "types.h"
+#include "bcbuilder.h"

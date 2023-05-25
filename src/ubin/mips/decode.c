@@ -1,5 +1,5 @@
-#include "consts.h"
 #include "decode.h"
+#include "consts.h"
 #include "instr.h"
 #include "reg.h"
 
@@ -52,7 +52,7 @@ void mips_typeR_inst(int inst, int opcode)
 		printf("JR %d\n", rs);
 		break;
 	default:
-		printf("Instrução R não reconhecida\n");
+		printf("Instrucao tipo R nao reconhecida\n");
 		break;
 	}
 }
@@ -73,7 +73,7 @@ void mips_typeJ_inst(int inst, int opcode)
 		printf("JAL %x\n", target);
 		break;
 	default:
-		printf("Instrução J não reconhecida\n");
+		printf("Instrucao tipo J nao reconhecida\n");
 		break;
 	}
 }
@@ -82,7 +82,7 @@ void mips_typeI_inst(int inst, int opcode)
 {
 	int rs = (inst >> 21) & 0x1F;
 	int rt = (inst >> 16) & 0x1F;
-	int imm = inst & 0xFFFF;
+	int imm = (int16_t) (inst & 0xFFFF);
 
 	opcode = opcode << 26;
 
@@ -125,7 +125,7 @@ void mips_typeI_inst(int inst, int opcode)
 		printf("BNE %s, %d, %x\n", mips_get_reg_name(rt), mips_get_reg_name(rs), imm);
 		break;
 	default:
-		printf("Instrução I não reconhecida\n");
+		printf("Instrucao tipo I nao reconhecida\n");
 		break;
 	}
 }

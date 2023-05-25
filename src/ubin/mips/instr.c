@@ -1,5 +1,5 @@
-#include "consts.h"
 #include "instr.h"
+#include "consts.h"
 #include "mem.h"
 #include "reg.h"
 

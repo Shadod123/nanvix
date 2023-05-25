@@ -1,5 +1,5 @@
-#include "consts.h"
 #include "reg.h"
+#include "consts.h"
 
 int mips_get_reg(int reg)
 {
@@ -15,40 +15,40 @@ char *mips_get_reg_name(int reg)
 {
 	switch (reg)
 	{
-	case 8:
+	case t0:
 		return "$t0";
-	case 9:
+	case t1:
 		return "$t1";
-	case 10:
+	case t2:
 		return "$t2";
-	case 11:
+	case t3:
 		return "$t3";
-	case 12:
+	case t4:
 		return "$t4";
-	case 13:
+	case t5:
 		return "$t5";
-	case 14:
+	case t6:
 		return "$t6";
-	case 15:
+	case t7:
 		return "$t7";
-	case 16:
+	case s0:
 		return "$s0";
-	case 17:
+	case s1:
 		return "$s1";
-	case 18:
+	case s2:
 		return "$s2";
-	case 19:
+	case s3:
 		return "$s3";
-	case 20:
+	case s4:
 		return "$s4";
-	case 21:
+	case s5:
 		return "$s5";
-	case 22:
+	case s6:
 		return "$s6";
-	case 23:
+	case s7:
 		return "$s7";
 	default:
-		printf("Registrador não reconhecido\n");
+		printf("Registrador nao reconhecido\n");
 		return "";
 	}
 }
