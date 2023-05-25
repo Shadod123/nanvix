@@ -1,6 +1,6 @@
+#include "mem.h"
 #include "consts.h"
 #include "decode.h"
-#include "mem.h"
 
 int mips_read_mem(int addr)
 {
@@ -14,9 +14,9 @@ void mips_write_mem(int addr, int val)
 
 void mips_load(int *program, int size)
 {
-	lenght = size / sizeof(int);
+	length = size / sizeof(int);
 
-	for (int i = 0; i < lenght; i++)
+	for (int i = 0; i < length; i++)
 	{
 		memory[i] = program[i];
 	}
@@ -36,7 +36,7 @@ void mips_exec()
 {
 	int inst = 0;
 
-	while (counter < lenght)
+	while (counter < length)
 	{
 		inst = memory[counter];
 

@@ -7,24 +7,20 @@
  */
 int main()
 {
-	int size = 13 * sizeof(int);
+	int size = 9 * sizeof(int);
 	int *program = (int *)malloc(size);
 
 	mips_clean();
 
-	program[0] = 0x02114020;  // add $t0, $s0, $s1
-	program[1] = 0x02534820;  // add $t1, $s2, $s3
-	program[2] = 0x0109a022;  // sub $s4, $t0, $t1
-	program[3] = 0x02115822;  // sub $t3, $s0, $s1
-	program[4] = 0x0174a820;  // add $s5, $t3, $s4
-	program[5] = 0x02958822;  // sub $s1, $s4, $s5
-    program[6] = 0x210F0007;  // addi $t7, $t0, 7
-    program[7] = 0xAE910000;  // sw $s1, 0($s4)
-    program[8] = 0xAE950017;  // sw $s5, 23($s4)
-    program[9] = 0xAE8B0004;  // sw $t3, 4($s4)
-    program[10] = 0x8E920000; // lw $s2, 0($s4)
-    program[11] = 0x8E920017; // lw $s2, 23($s4)
-	program[12] = 0x8E920004; // lw $s2, 4($s4)
+	program[0] = mips_typeR_bytecode(ADD, t0, s0, s1); // add $t0, $s0, $s1
+	program[1] = mips_typeR_bytecode(SUB, s4, t0, t1); // sub $s4, $t0, $t1
+	program[2] = mips_typeI_bytecode(ADDI, t7, t0, 7); // addi $t7, $t0, 7
+	program[3] = mips_typeI_bytecode(SW, t0, s4, 0);   // sw $t0, 0($s4)
+	program[4] = mips_typeI_bytecode(SW, t0, s4, 23);  // sw $t0, 23($s4)
+	program[5] = mips_typeI_bytecode(LW, s2, s4, 0);   // lw $s2, 0($s4)
+	program[6] = mips_typeI_bytecode(LW, s2, s4, 23);  // lw $s2, 23($s4)
+	program[7] = mips_typeI_bytecode(SW, t0, s4, -4);  // sw $t0, -4($s4)
+	program[8] = mips_typeI_bytecode(LW, s2, s4, -4);  // lw $s2, -4($s4)
 
 	mips_load(program, size);
 	mips_exec();
