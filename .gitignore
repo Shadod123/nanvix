@@ -46,7 +46,11 @@ doc/*-kernel
 *.iso
 nanvix-iso/*
 tools/run/bochsrc.txt
+hdd.img.lock
 
 # Exceptions.
 !doc/paper/img/*.pdf
 !doc/paper/*.pdf
+
+# Vscode
+.vscode/
