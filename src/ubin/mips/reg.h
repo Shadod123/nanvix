@@ -40,7 +40,7 @@ int mips_get_reg(int reg);
 void mips_set_reg(int reg, int val);
 
 /**
- * @brief Define o valor do registrador especificado (unsigned).
+ * @brief Define o valor (unsigned) do registrador especificado.
  *
  * @param reg O registrador a ser definido.
  * @param val O valor a ser atribuído ao registrador.
