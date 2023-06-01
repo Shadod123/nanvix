@@ -33,10 +33,10 @@ int mips_typeR_bytecode(int mnem, int rd, int rs, int rt)
 		bytecode |= mnem | (rs << 21) | (rt << 16) | (rd << 11) | (0 << 6);
 		break;
 	case SLL:
-		bytecode |= mnem | (rs << 21) | (rt << 16) | (rd << 11) | (rs << 6);
+		bytecode |= mnem | (rs << 21) | (0 << 16) | (rd << 11) | (rt << 6);
 		break;
 	case SRL:
-		bytecode |= mnem | (rs << 21) | (rt << 16) | (rd << 11) | (rs << 6);
+		bytecode |= mnem | (rs << 21) | (0 << 16) | (rd << 11) | (rt << 6);
 		break;
 	case JR:
 		bytecode |= mnem | (rs << 21) | (0 << 16) | (0 << 11) | (0 << 6);
