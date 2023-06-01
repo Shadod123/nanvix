@@ -21,6 +21,15 @@ void mips_add(int rd, int rs, int rt);
 void mips_addi(int rt, int rs, int imm);
 
 /**
+ * @brief Realiza a operação de adição entre o registrador rs e o valor imediato imm sem sinal, e armazena o resultado no registrador rt.
+ *
+ * @param rt  Registrador de destino da operação.
+ * @param rs  Registrador de origem da operação.
+ * @param imm Valor imediato.
+ */
+void mips_addiu(int rt, int rs, int imm);
+
+/**
  * @brief Realiza a operação de subtração entre os registradores rs e rt, e armazena o resultado no registrador rd.
  *
  * @param rd Registrador de destino da operação.
@@ -53,3 +62,101 @@ void mips_sw(int rd, int imm, int rs);
  * @param target Endereço de destinho da operação (label).
  */
 void mips_j(int target);
+
+/**
+ * @brief Realiza a operação de adição entre os registradores rs e rt sem sinal, e armazena o resultado no registrador rd.
+ *
+ * @param rd Registrador de destino da operação.
+ * @param rs Registrador de origem 1 da operação.
+ * @param rt Registrador de origem 2 da operação.
+ */
+void mips_addu(int rd, int rs, int rt);
+
+/**
+ * @brief Realiza a operação de subtração entre os registradores rs e rt sem sinal, e armazena o resultado no registrador rd.
+ *
+ * @param rd Registrador de destino da operação.
+ * @param rs Registrador de origem 1 da operação.
+ * @param rt Registrador de origem 2 da operação.
+ */
+void mips_subu(int rd, int rs, int rt);
+
+/**
+ * @brief Realiza a operação de and bit a bit entre os registradores rs e rt, e armazena o resultado no registrador rd.
+ *
+ * @param rd Registrador de destino da operação.
+ * @param rs Registrador de origem 1 da operação.
+ * @param rt Registrador de origem 2 da operação.
+ */
+void mips_and(int rd, int rs, int rt);
+
+/**
+ * @brief Realiza a operação or bit a bit entre os registradores rs e rt, e armazena o resultado 0 ou 1 no registrador rd.
+ *
+ * @param rd Registrador de destino da operação.
+ * @param rs Registrador de origem 1 da operação.
+ * @param rt Registrador de origem 2 da operação.
+ */
+void mips_or(int rd, int rs, int rt);
+
+/**
+ * @brief Realiza a operação de o menor entre os registradores rs e rt sem sinal, e armazena o resultado 0 ou 1 no registrador rd.
+ *
+ * @param rd Registrador de destino da operação.
+ * @param rs Registrador de origem 1 da operação.
+ * @param rt Registrador de origem 2 da operação.
+ */
+void mips_sltu(int rd, int rs, int rt);
+
+/**
+ * @brief Realiza a operação de and bita a bit entre o registrador rs e o valor imediato imm, e armazena o resultado no registrador rt.
+ *
+ * @param rt  Registrador de destino da operação.
+ * @param rs  Registrador de origem da operação.
+ * @param imm Valor imediato.
+ */
+void mips_andi(int rt, int rs, int imm);
+
+/**
+ * @brief Realiza a operação de or bit a bit entre o registrador rs e o valor imediato imm, e armazena o resultado no registrador rt.
+ *
+ * @param rt  Registrador de destino da operação.
+ * @param rs  Registrador de origem da operação.
+ * @param imm Valor imediato.
+ */
+void mips_ori(int rt, int rs, int imm);
+
+/**
+ * @brief Realiza a operação de carregar o superior imediato, e armazena o resultado no registrador rt.
+ *
+ * @param rt  Registrador de destino da operação.
+ * @param imm Valor imediato.
+ */
+void mips_lui(int rt,int imm);
+
+/**
+ * @brief Realiza a operação de deslocamento à esquerda lógica, e armazena o resultado no registrador rt.
+ *
+ * @param rd  Registrador de destino da operação.
+ * @param rs  Registrador de origem da operação.
+ * @param shamt Valor imediato.
+ */
+void mips_sll(int rd, int rs, int shamt);
+
+/**
+ * @brief Realiza a operação de deslocamento à direita lógica, e armazena o resultado no registrador rt.
+ *
+ * @param rd  Registrador de destino da operação.
+ * @param rs  Registrador de origem da operação.
+ * @param shamt Valor imediato.
+ */
+void mips_srl(int rd, int rs, int shamt);
+
+/**
+ * @brief Realiza a operação de o menor entre o registradores rs e o imediato shamt sem sinal, e armazena o resultado no registrador rt.
+ *
+ * @param rt  Registrador de destino da operação.
+ * @param rs  Registrador de origem da operação.
+ * @param shamt Valor imediato.
+ */
+void mips_sltiu(int rt, int rs, int shamt);
