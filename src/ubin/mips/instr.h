@@ -132,7 +132,7 @@ void mips_ori(int rt, int rs, int imm);
  * @param rt  Registrador de destino da operação.
  * @param imm Valor imediato.
  */
-void mips_lui(int rt,int imm);
+void mips_lui(int rt, int imm);
 
 /**
  * @brief Realiza a operação de deslocamento à esquerda lógica, e armazena o resultado no registrador rt.
