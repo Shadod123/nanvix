@@ -34,7 +34,8 @@ void mips_clean()
 
 void mips_exec()
 {
-	int inst = 0;
+	cycles = 0;
+	int inst, ic = 0;
 
 	while (counter < length)
 	{
@@ -43,7 +44,10 @@ void mips_exec()
 		mips_decode_inst(inst);
 
 		counter++;
+		ic++;
 	}
+
+	printf("CPI: %d / %d = %d\n", cycles, ic, cycles / ic);
 
 	mips_clean();
 }
