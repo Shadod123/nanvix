@@ -10,10 +10,10 @@
 #define false 0
 
 #define REGISTER_LEN 16
-#define MEMORY_LEN 256
+#define MEMORY_LEN 1024
 
-int counter;
-int registers[REGISTER_LEN];
-int memory[MEMORY_LEN];
-int length;
-int cycles;
+int mips_counter;
+int mips_reg_bank[REGISTER_LEN];
+int mips_memory_buffer[MEMORY_LEN];
+int mips_memory_len;
+int mips_cycles;

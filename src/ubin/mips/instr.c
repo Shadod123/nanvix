@@ -47,7 +47,7 @@ void mips_sw(int rt, int imm, int rs)
 
 void mips_j(int target)
 {
-	counter = target;
+	mips_counter = target;
 }
 
 void mips_subu(int rd, int rs, int rt)

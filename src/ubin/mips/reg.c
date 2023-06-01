@@ -3,17 +3,17 @@
 
 int mips_get_reg(int reg)
 {
-	return registers[reg];
+	return mips_reg_bank[reg];
 }
 
 void mips_set_reg(int reg, int val)
 {
-	registers[reg] = val;
+	mips_reg_bank[reg] = val;
 }
 
 void mips_set_reg_unsigned(int reg, unsigned int val)
 {
-	registers[reg] = val;
+	mips_reg_bank[reg] = val;
 }
 
 char *mips_get_reg_name(int reg)

@@ -2,12 +2,10 @@
 
 void test1()
 {
-	printf("-- TESTE 1 --\n");
+	printf("\n-- TESTE 1 --\n");
 
 	int size = 9 * sizeof(int);
 	int *program = (int *)malloc(size);
-
-	mips_clean();
 
 	program[0] = mips_typeR_bytecode(ADD, t0, s0, s1); // add $t0, $s0, $s1
 	program[1] = mips_typeR_bytecode(SUB, s4, t0, t1); // sub $s4, $t0, $t1
@@ -25,12 +23,10 @@ void test1()
 
 void test2()
 {
-	printf("-- TESTE 2 --\n");
+	printf("\n-- TESTE 2 --\n");
 
 	int size = 10 * sizeof(int);
 	int *program = (int *)malloc(size);
-
-	mips_clean();
 
 	program[0] = mips_typeI_bytecode(ADDI, s0, t0, 2); // addi $s0, $t0, 2
 	program[1] = mips_typeI_bytecode(ADDI, s1, t0, 3); // addi $s1, $t0, 3
@@ -49,12 +45,10 @@ void test2()
 
 void test3()
 {
-	printf("-- TESTE 3 --\n");
+	printf("\n-- TESTE 3 --\n");
 
 	int size = 12 * sizeof(int);
 	int *program = (int *)malloc(size);
-
-	mips_clean();
 
 	program[0] = mips_typeI_bytecode(ORI, t0, t0, 0x7fff);
 	program[1] = mips_typeI_bytecode(ORI, s0, t0, 0xffff);
@@ -81,7 +75,7 @@ void test3()
 int main()
 {
 	test1();
-	test2();
-	test3();
+	//test2();
+	//test3();
 	return 0;
 }

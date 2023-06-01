@@ -4,50 +4,55 @@
 
 int mips_read_mem(int addr)
 {
-	return memory[addr];
+	return mips_memory_buffer[addr];
 }
 
 void mips_write_mem(int addr, int val)
 {
-	memory[addr] = val;
+	mips_memory_buffer[addr] = val;
 }
 
 void mips_load(int *program, int size)
 {
-	length = size / sizeof(int);
+	mips_memory_len = size / sizeof(int);
 
-	for (int i = 0; i < length; i++)
+	for (int i = 0; i < mips_memory_len; i++)
 	{
-		memory[i] = program[i];
+		mips_memory_buffer[i] = program[i];
 	}
 
 	for (int i = 0; i < REGISTER_LEN; i++)
 	{
-		registers[i] = 1;
+		mips_reg_bank[i] = 10;
 	}
 }
 
 void mips_clean()
 {
-	memset(memory, 0, sizeof(memory));
+	mips_counter = 0;
+	memset(mips_reg_bank, 0, sizeof(mips_reg_bank));
+	memset(mips_memory_buffer, 0, sizeof(mips_memory_buffer));
+	mips_memory_len = 0;
+	mips_cycles = 0;
 }
 
 void mips_exec()
 {
-	cycles = 0;
+	mips_counter = 0;
+	mips_cycles = 0;
 	int inst, ic = 0;
 
-	while (counter < length)
+	while (mips_counter < mips_memory_len)
 	{
-		inst = memory[counter];
+		inst = mips_memory_buffer[mips_counter];
 
 		mips_decode_inst(inst);
 
-		counter++;
+		mips_counter++;
 		ic++;
 	}
 
-	printf("CPI: %d / %d = %d\n", cycles, ic, cycles / ic);
+	printf("CPI: %d / %d = %d\n", mips_cycles, ic, mips_cycles / ic);
 
 	mips_clean();
 }
