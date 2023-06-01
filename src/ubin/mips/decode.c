@@ -22,6 +22,7 @@ void mips_typeR_inst(int inst, int opcode)
 		break;
 	case ADDU:
 		printf("ADDU %s, %s, %s\n", mips_get_reg_name(rd), mips_get_reg_name(rs), mips_get_reg_name(rt));
+		mips_addu(rd, rs, rt);
 		break;
 	case SUB:
 		printf("SUB %s, %s, %s\n", mips_get_reg_name(rd), mips_get_reg_name(rs), mips_get_reg_name(rt));
@@ -29,24 +30,30 @@ void mips_typeR_inst(int inst, int opcode)
 		break;
 	case SUBU:
 		printf("SUBU %s, %s, %s\n", mips_get_reg_name(rd), mips_get_reg_name(rs), mips_get_reg_name(rt));
+		mips_subu(rd, rs, rt);
 		break;
 	case AND:
 		printf("AND %s, %s, %s\n", mips_get_reg_name(rd), mips_get_reg_name(rs), mips_get_reg_name(rt));
+		mips_and(rd, rs, rt);
 		break;
 	case OR:
 		printf("OR %s, %s, %s\n", mips_get_reg_name(rd), mips_get_reg_name(rs), mips_get_reg_name(rt));
+		mips_or(rd, rs, rt);
 		break;
 	case SLT:
 		printf("SLT %s, %s, %s\n", mips_get_reg_name(rd), mips_get_reg_name(rs), mips_get_reg_name(rt));
 		break;
 	case SLTU:
 		printf("SLTU %s, %s, %s\n", mips_get_reg_name(rd), mips_get_reg_name(rs), mips_get_reg_name(rt));
+		mips_sltu(rd, rs, rt);
 		break;
 	case SLL:
 		printf("SLL %s, %s, %s\n", mips_get_reg_name(rd), mips_get_reg_name(rt), shamt);
+		mips_sll(rd, rs, shamt);
 		break;
 	case SRL:
 		printf("SRL %s, %s, %s\n", mips_get_reg_name(rd), mips_get_reg_name(rt), shamt);
+		mips_srl(rd, rs, shamt);
 		break;
 	case JR:
 		printf("JR %d\n", rs);
@@ -94,21 +101,26 @@ void mips_typeI_inst(int inst, int opcode)
 		break;
 	case ADDIU:
 		printf("ADDIU %s, %s, %d\n", mips_get_reg_name(rt), mips_get_reg_name(rs), imm);
+		mips_addiu(rt, rs, imm);
 		break;
 	case ANDI:
 		printf("ANDI %s, %s, %d\n", mips_get_reg_name(rt), mips_get_reg_name(rs), imm);
+		mips_andi(rt, rs, imm);
 		break;
 	case ORI:
 		printf("ORI %s, %s, %d\n", mips_get_reg_name(rt), mips_get_reg_name(rs), imm);
+		mips_ori(rt, rs, imm);
 		break;
 	case SLTI:
 		printf("SLTI %s, %s, %d\n", mips_get_reg_name(rt), mips_get_reg_name(rs), imm);
 		break;
 	case SLTIU:
 		printf("SLTIU %s, %s, %d\n", mips_get_reg_name(rt), mips_get_reg_name(rs), imm);
+		mips_sltiu(rt, rs, imm);
 		break;
 	case LUI:
 		printf("LUI %s, %x\n", mips_get_reg_name(rt), imm);
+		 mips_lui(rt, imm);
 		break;
 	case LW:
 		printf("LW %s, %d(%s)\n", mips_get_reg_name(rt), imm, mips_get_reg_name(rs));
