@@ -83,7 +83,7 @@ void mips_ori(int rt, int rs, int imm)
 void mips_lui(int rt, int imm)
 {
 	mips_set_reg_unsigned(rt, imm << 16);
-	printf("%d << 16 = %d\n\n", (unsigned int)imm, mips_get_reg(rt));
+	printf("%d << 16 = %d\n\n", (unsigned int) imm, mips_get_reg(rt));
 }
 
 void mips_sll(int rd, int rs, int shamt)
