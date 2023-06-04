@@ -48,6 +48,7 @@ void mips_typeR_inst(int inst, int opcode)
 		break;
 	case SLT:
 		printf("SLT %s, %s, %s\n", mips_get_reg_name(rd), mips_get_reg_name(rs), mips_get_reg_name(rt));
+		mips_slt(rd, rs, rt);
 		mips_cycles+=2; // Register Fetch e Write Back
 		break;
 	case SLTU:
@@ -67,7 +68,8 @@ void mips_typeR_inst(int inst, int opcode)
 		break;
 	case JR:
 		printf("JR %d\n", rs);
-		mips_cycles+=2; // Register Fetch e Write Back
+		mips_jr(rs);
+		mips_cycles+=1; // Register Fetch
 		break;
 	default:
 		printf("Instrucao tipo R nao reconhecida\n");
@@ -88,11 +90,10 @@ void mips_typeJ_inst(int inst, int opcode)
 	case J:
 		printf("J %x\n", target);
 		mips_j(target);
-		mips_cycles+=1; // Write Back
 		break;
 	case JAL:
 		printf("JAL %x\n", target);
-		mips_cycles+=2; // Register Fetch e Write Back
+		mips_jal(target);
 		break;
 	default:
 		printf("Instrucao tipo J nao reconhecida\n");
@@ -134,16 +135,12 @@ void mips_typeI_inst(int inst, int opcode)
 		break;
 	case SLTI:
 		printf("SLTI %s, %s, %d\n", mips_get_reg_name(rt), mips_get_reg_name(rs), imm);
+		mips_slti(rt, rs, imm);
 		mips_cycles+=2; // Register Fetch e Write Back
 		break;
 	case SLTIU:
 		printf("SLTIU %s, %s, %d\n", mips_get_reg_name(rt), mips_get_reg_name(rs), imm);
 		mips_sltiu(rt, rs, imm);
-		mips_cycles+=2; // Register Fetch e Write Back
-		break;
-	case LUI:
-		printf("LUI %s, %x\n", mips_get_reg_name(rt), imm);
-		mips_lui(rt, imm);
 		mips_cycles+=2; // Register Fetch e Write Back
 		break;
 	case LW:
@@ -157,12 +154,14 @@ void mips_typeI_inst(int inst, int opcode)
 		mips_cycles+=3; // Register Fetch, Memory Access e Write Back 
 		break;
 	case BEQ:
-		printf("BEQ %s, %d, %x\n", mips_get_reg_name(rt), mips_get_reg_name(rs), imm);
-		mips_cycles+=3; // Register Fetch, Memory Access e Write Back
+		printf("BEQ %s, %d, %x\n", mips_get_reg_name(rs), mips_get_reg_name(rt), imm);
+		mips_beq(rs, rt, imm);
+		mips_cycles+=1; // Register Fetch
 		break;
 	case BNE:
-		printf("BNE %s, %d, %x\n", mips_get_reg_name(rt), mips_get_reg_name(rs), imm);
-		mips_cycles+=3; // Register Fetch, Memory Access e Write Back
+		printf("BNE %s, %d, %x\n", mips_get_reg_name(rs), mips_get_reg_name(rt), imm);
+		mips_bne(rs, rt, imm);
+		mips_cycles+=1; // Register Fetch
 		break;
 	default:
 		printf("Instrucao tipo I nao reconhecida\n");
