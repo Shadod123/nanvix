@@ -43,7 +43,7 @@ void mips_beq(int rs, int rt, int imm)
 {
 	if (mips_get_reg(rs) == mips_get_reg(rt))
 	{
-		mips_counter == imm;
+		mips_counter = imm;
 		printf("%d == %d -> true ; PC = %d\n\n", mips_get_reg(rs), mips_get_reg(rt), imm);
 	}
 	else 
@@ -56,7 +56,7 @@ void mips_bne(int rs, int rt, int imm)
 {
 	if (mips_get_reg(rs) != mips_get_reg(rt))
 	{
-		mips_counter == imm;
+		mips_counter = imm;
 		printf("%d != %d -> true ; PC = %d\n\n", mips_get_reg(rs), mips_get_reg(rt), imm);
 	}
 	else 
